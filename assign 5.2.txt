@@ -1,0 +1,41 @@
+public class Person {
+ 
+   public String firstName;
+   public String lastName;
+   public String address;
+   public String username;
+ 
+   public Person(String firstName, String lastName, String number, String Email)
+   {
+     this.firstName = firstName;
+     this.lastName = lastName;
+     this.number = number;
+     this.Email = Email;
+   }
+ 
+   
+   public Person(String firstName, String lastName, String number)
+   {
+     this.firstName = firstName;
+     this.lastName = lastName;
+     this.address = number;
+     this.Email = "";
+   }
+ 
+   public void displayPersonDetails()
+   {
+     System.out.println("Name: " + firstName + " " + lastName);
+     System.out.println("Number: " + number);
+     System.out.println("Email: " + Email);
+   }
+ }
+
+public class PersonEx {
+ 
+   public static void main(String[] args) {
+ 
+     Person David = new Person("Dave", "Davidson", "407-555-5555.", "DG@mail.com");
+     david.displayPersonDetails();
+   }
+ 
+ }

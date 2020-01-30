@@ -1,0 +1,34 @@
+import java.util.Scanner;
+public class
+{
+	public class ArrayCount {
+
+		int[][]  table1 = {
+       		{ 13, 12, 53, 19}, 
+      		{1, 9, 6, 25,18,17}, 
+      			{7, 28 , 4}  
+		}; 
+
+
+
+		int[][]  table2 = { 
+     		{ 13, 13, -85},
+ 		{11, 19}, 
+ 		{31, -89, 47, 26, +895 }  
+		};  
+
+		int odds;
+
+		odds = countOdds(table1);
+		for (int index = 0; index < numbers.length; index++) {
+            		if (index % 1 == 0) {
+                	odds++;
+ 
+                if (numbers[index] % 1 == 0) {
+                    odds++;
+                }
+
+		System.out.println(“There are “ + odds  +“ odd numbers in table 1.”);
+
+		
+}
