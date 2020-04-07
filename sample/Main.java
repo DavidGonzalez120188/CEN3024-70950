@@ -37,6 +37,10 @@ public class Main extends Application implements EventHandler<ActionEvent> {
         launch(args);
     }
 
+    /***
+     *Added by David Gonzalez  on 4/06/2020
+     * @param primaryStage Creates the stage and scene for word occurrences
+     */
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Word Occurrences");
@@ -53,8 +57,10 @@ public class Main extends Application implements EventHandler<ActionEvent> {
         primaryStage.show();
     }
 
-    //When button is clicked, handle() gets called
-    //Button click is an ActionEvent (also MouseEvents, TouchEvents, etc...)
+    /**
+     * Added by David Gonzaelz on 4/06/2020
+     * @param event Main is output of repeated words once the button is clicked
+     */
     @Override
     public void handle(ActionEvent event) {
         if (event.getSource() == button) {
@@ -69,17 +75,11 @@ public class Main extends Application implements EventHandler<ActionEvent> {
     }
     }
 
-
-    public static void Second(String args[]) {
-        Map<String, Integer> wordMap = buildWordMap("C:/users/David/documents/MacBeth.txt");
-        List<Map.Entry<String, Integer>> list = sortByValueInDecreasingOrder(wordMap);
-        System.out.println("List of repeated words");
-        for (Map.Entry<String, Integer> entry : list) {
-            if (entry.getValue() > 100) {
-                System.out.println(entry.getKey() + " => " + entry.getValue());
-            }
-        }
-    }
+    /**
+     * Added by David Gonzalez on 4/06/2020
+     * @param fileName buildWordMap builds word count
+     * @return wordMap
+     */
 
     public static Map<String, Integer> buildWordMap(String fileName) {
 
@@ -112,6 +112,11 @@ public class Main extends Application implements EventHandler<ActionEvent> {
         return wordMap;
     }
 
+    /**
+     * Added by David Gonzalez on 4/06/2020
+     * @param wordMap creates and sorts list
+     * @return lists of words
+     */
     public static List<Map.Entry<String, Integer>> sortByValueInDecreasingOrder(Map<String, Integer> wordMap) {
         Set<Map.Entry<String, Integer>> entries = wordMap.entrySet();
         List<Map.Entry<String, Integer>> list = new ArrayList<>(entries);
