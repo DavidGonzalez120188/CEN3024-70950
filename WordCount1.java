@@ -1,5 +1,16 @@
-package WordCount;
+package sample;
 
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+import java.io.*;
+import java.util.*;
+import java.util.regex.Pattern;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -15,35 +26,76 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.regex.Pattern;
+import java.util.Map.*;
+import java.util.*;
 
-public class WordCount1 {
+public class Main extends Application implements EventHandler<ActionEvent> {
 
-	public static void main(String args[]) {
-        Map<String, Integer> wordMap = buildWordMap("C:/users/David/documents/MacBeth.txt");
-        List<Entry<String, Integer>> list = sortByValueInDecreasingOrder(wordMap);
+    Button button;
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) {
+        primaryStage.setTitle("Word Occurrences");
+        button = new Button();
+        button.setText("Output Words");
+
+        //This class will handle the button events
+        button.setOnAction(this);
+
+        StackPane layout = new StackPane();
+        layout.getChildren().add(button);
+        Scene scene = new Scene(layout, 300, 250);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    //When button is clicked, handle() gets called
+    //Button click is an ActionEvent (also MouseEvents, TouchEvents, etc...)
+    @Override
+    public void handle(ActionEvent event) {
+        if (event.getSource() == button) {
+            Map<String, Integer> wordMap = buildWordMap("C:/users/David/documents/MacBeth.txt");
+        List<Map.Entry<String, Integer>> list = sortByValueInDecreasingOrder(wordMap);
         System.out.println("List of repeated words");
         for (Map.Entry<String, Integer> entry : list) {
-            if (entry.getValue() > 1) {
+            if (entry.getValue() > 100) {
+                System.out.println(entry.getKey() + " => " + entry.getValue());
+            }
+        }
+    }
+    }
+
+
+    public static void Second(String args[]) {
+        Map<String, Integer> wordMap = buildWordMap("C:/users/David/documents/MacBeth.txt");
+        List<Map.Entry<String, Integer>> list = sortByValueInDecreasingOrder(wordMap);
+        System.out.println("List of repeated words");
+        for (Map.Entry<String, Integer> entry : list) {
+            if (entry.getValue() > 100) {
                 System.out.println(entry.getKey() + " => " + entry.getValue());
             }
         }
     }
 
     public static Map<String, Integer> buildWordMap(String fileName) {
-        
+
         Map<String, Integer> wordMap = new HashMap<>();
-        
-        
+
+
         try (FileInputStream fis = new FileInputStream(fileName);
-                DataInputStream dis = new DataInputStream(fis);
-                BufferedReader br = new BufferedReader(new InputStreamReader(dis))) {
-           
-        	
+             DataInputStream dis = new DataInputStream(fis);
+             BufferedReader br = new BufferedReader(new InputStreamReader(dis))) {
+
+
             Pattern pattern = Pattern.compile("\\s+");
             String line = null;
             while ((line = br.readLine()) != null) {
-                
-            	
+
+
                 line = line.toLowerCase();
                 String[] words = pattern.split(line);
                 for (String word : words) {
@@ -60,9 +112,9 @@ public class WordCount1 {
         return wordMap;
     }
 
-    public static List<Entry<String, Integer>> sortByValueInDecreasingOrder(Map<String, Integer> wordMap) {
-        Set<Entry<String, Integer>> entries = wordMap.entrySet();
-        List<Entry<String, Integer>> list = new ArrayList<>(entries);
+    public static List<Map.Entry<String, Integer>> sortByValueInDecreasingOrder(Map<String, Integer> wordMap) {
+        Set<Map.Entry<String, Integer>> entries = wordMap.entrySet();
+        List<Map.Entry<String, Integer>> list = new ArrayList<>(entries);
         Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
             @Override
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
@@ -72,5 +124,3 @@ public class WordCount1 {
         return list;
     }
 }
-
-
