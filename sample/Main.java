@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+import java.sql.*;
+
 import java.io.*;
 import java.util.*;
 import java.util.regex.Pattern;
@@ -129,3 +131,26 @@ public class Main extends Application implements EventHandler<ActionEvent> {
         return list;
     }
 }
+
+/** public class database {
+ *
+ * public void connectDatabase()
+ * {
+ *     try{
+ *         Class.forname("com.mysql.jdbc.Driver");
+ *         Connection con = DriverManager.getConnection(
+ *                      url: "jdbc.:mysql://localhost:3306/wordoccurences", user: "DavidGonzalez", password: "Asher!0815");
+ *
+ *                      Statement stmt = con.createStatement();
+ *                      ResultSet rs = stmt.executeQuery( sql: "select * from wordoccureneces");
+ *                      while(rs.next())
+ *                          system.outprintln(rs.getInt( columnIndex: 1))
+ *                          stmt.close();
+ *                          con.close();
+ *                      }catch(Exception e){System.out.println(e);}
+ *     }
+ * }
+ *
+ }
+ *
+ **/
